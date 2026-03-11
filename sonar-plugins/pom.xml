@@ -13,8 +13,8 @@
         <sonar.moduleKey>${artifactId}</sonar.moduleKey>
         <sonar.version>9.4.0.54424</sonar.version>
         <java.plugin.version>8.24.0.42567</java.plugin.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <build>
@@ -30,7 +30,7 @@
                     <pluginDescription>For test purposes</pluginDescription>
                     <pluginClass>pl.piomin.sonar.plugin.CustomRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <sonarQubeMinVersion>7.0</sonarQubeMinVersion>
+                    <sonarQubeMinVersion>8.0</sonarQubeMinVersion>
                     <skipDependenciesPackaging>true</skipDependenciesPackaging>
                 </configuration>
             </plugin>
@@ -95,9 +95,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.14.3</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -108,12 +109,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.5.32</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.27.7</version>
             <scope>test</scope>
         </dependency>
         <dependency>

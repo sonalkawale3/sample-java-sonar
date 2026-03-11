@@ -32,11 +32,11 @@ public class CustomAuthorCommentCheck extends IssuableSubscriptionVisitor {
 		// TODO - reconsider
 //		if (syntaxTrivia.column() != 0)
 //			return;
-		if (comment == null) {
+		if (comment.isBlank()) {
 			reportIssue(actualTree, MSG_NO_COMMENT);
 			return;
 		}
-		if (!comment.contains("@author")) {
+		if (syntaxTrivia.commentKind() == SyntaxTrivia.CommentKind.JAVADOC && !comment.contains("@author")) {
 			reportIssue(actualTree, MSG_NO_AUTHOR);
 			return;
 		}

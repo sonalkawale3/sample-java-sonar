@@ -1,16 +1,11 @@
 package pl.piomin.sonar.controller;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import pl.piomin.sonar.exception.AuthenticationException;
 import pl.piomin.sonar.exception.EntityNotFoundException;
@@ -62,7 +57,7 @@ public class PersonController {
      * @return
      * @throws AuthenticationException
      */
-    public Set<Person> findByLastName(@PathVariable("lastName") String lastName,
+    public Set<Person> findByLastName(@PathVariable String lastName,
                                       @RequestHeader("Authorization") String auth) throws AuthenticationException {
         LOGGER.info(() -> "Person.findByLastName: " + lastName);
         authService.authorize(auth);
@@ -78,8 +73,9 @@ public class PersonController {
      * @return
      * @throws AuthenticationException
      */
-    public Set<Person> findByName(@PathVariable("lastName") String lastName,
-                                  @PathVariable("firstName") String firstName, @RequestHeader("Authorization") String auth)
+    public Set<Person> findByName(@PathVariable String lastName,
+                                  @PathVariable String firstName,
+                                  @RequestHeader("Authorization") String auth)
             throws AuthenticationException {
         LOGGER.info(() -> "Person.findByName: " + lastName + ", " + firstName);
         authService.authorize(auth);
@@ -95,7 +91,7 @@ public class PersonController {
      * @throws AuthenticationException
      * @throws EntityNotFoundException
      */
-    public Person findById(@PathVariable("id") Integer id, @RequestHeader("Authorization") String auth)
+    public Person findById(@PathVariable Integer id, @RequestHeader("Authorization") String auth)
             throws AuthenticationException, EntityNotFoundException {
         LOGGER.info(() -> "Person.findById: " + id);
         authService.authorize(auth);
@@ -126,7 +122,7 @@ public class PersonController {
      * @throws InvalidEntityException
      * @throws AuthenticationException
      */
-    public Person add(Person person, @RequestHeader("Authorization") String auth)
+    public Person add(@RequestBody Person person, @RequestHeader("Authorization") String auth)
             throws AuthenticationException {
         LOGGER.info(() -> "Person.add: " + person);
         authService.authorize(auth);
@@ -142,7 +138,7 @@ public class PersonController {
      * @throws InvalidEntityException
      * @throws AuthenticationException
      */
-    public Person update(Person person, @RequestHeader("Authorization") String auth)
+    public Person update(@RequestBody Person person, @RequestHeader("Authorization") String auth)
             throws AuthenticationException {
         LOGGER.info(() -> "Person.update: " + person);
         authService.authorize(auth);
@@ -151,12 +147,12 @@ public class PersonController {
 
     @DeleteMapping("/person")
     /**
-     * Removing person from repository
+     * Removing a person from a repository
      * @param person
      * @param auth
      * @throws AuthenticationException
      */
-    public void remove(Person person, @RequestHeader("Authorization") String auth) throws AuthenticationException {
+    public void remove(@RequestBody Person person, @RequestHeader("Authorization") String auth) throws AuthenticationException {
         LOGGER.info(() -> "Person.remove: " + person);
         authService.authorize(auth);
         repository.remove(person);
