@@ -30,7 +30,7 @@
                     <pluginDescription>For test purposes</pluginDescription>
                     <pluginClass>pl.piomin.sonar.plugin.CustomRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <sonarQubeMinVersion>8.0</sonarQubeMinVersion>
+                    <pluginApiMinVersion>8.0</pluginApiMinVersion>
                     <skipDependenciesPackaging>true</skipDependenciesPackaging>
                 </configuration>
             </plugin>
