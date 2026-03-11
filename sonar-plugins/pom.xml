@@ -22,7 +22,7 @@
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
-                <version>1.21.0.505</version>
+                <version>1.25.1.3002</version>
                 <extensions>true</extensions>
                 <configuration>
                     <pluginKey>piotrjava</pluginKey>
@@ -30,7 +30,7 @@
                     <pluginDescription>For test purposes</pluginDescription>
                     <pluginClass>pl.piomin.sonar.plugin.CustomRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <sonarQubeMinVersion>8.0</sonarQubeMinVersion>
+                    <pluginApiMinVersion>8.0</pluginApiMinVersion>
                     <skipDependenciesPackaging>true</skipDependenciesPackaging>
                 </configuration>
             </plugin>
