@@ -20,3 +20,18 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: SonarQubePrepare@8
+  inputs:
+    SonarQube: 'endpoint-for-sonarqube-new'
+    scannerMode: 'cli'
+    configMode: 'manual'
+    cliProjectKey: 'sonal'
+    cliSources: '.'
+
+- task: SonarQubeAnalyze@8
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+
+- task: SonarQubePublish@8
+  inputs:
+    pollingTimeoutSec: '300'
