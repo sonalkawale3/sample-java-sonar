@@ -17,18 +17,19 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: SonarQubePrepare@8
+- task: SonarCloudPrepare@4
   inputs:
-    SonarQube: 'endpoint-for-sonarqube-new'
+    SonarQube: 'sonarcloude-kawalesonal'
+    organization: 'kawalesonal5'
     scannerMode: 'cli'
     configMode: 'manual'
-    cliProjectKey: 'sonal'
+    cliProjectKey: 'abcd'
     cliSources: '.'
 
-- task: SonarQubeAnalyze@8
+- task: SonarCloudAnalyze@4
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
 
-- task: SonarQubePublish@8
+- task: SonarCloudPublish@4
   inputs:
     pollingTimeoutSec: '300'
